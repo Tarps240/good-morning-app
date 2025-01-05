@@ -1,0 +1,114 @@
+@import "./variables";
+
+.home-page {
+    padding: 2rem;
+    text-align: center;
+
+    h2 {
+        margin-bottom: 1rem;
+        color: $color-accent;
+    }
+    p {
+        margin-bottom: 2rem;
+        color: $color-muted;
+    }
+
+    .home-links {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+
+        .home-link {
+            background-color: $color-secondary;
+            color: #ffffff;
+            padding: 0.8rem 1.2rem;
+            border-radius: 5px;
+            text-decoration: none;
+
+            &:hover {
+                background-color: $color-accent2;
+            }
+        }
+
+    }
+}
+
+/* Crypto, News, Weather page styling can also go here or in partials: */
+
+.crypto-page, .news-page, .weather-page {
+    padding: 2rem;
+    // general styles
+}
+
+.crypto-page {
+  .coin-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .coin-item {
+    background-color: $color-secondary;
+    padding: 1rem;
+    border-radius: 5px;
+    // ...
+  }
+}
+
+.news-page {
+    .articles {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    .article-item {
+        width: 300px;
+        background-color: $color-secondary;
+        // ...
+    }
+}
+
+.weather-page {
+    .weather-form {
+        margin-bottom: 1rem;
+        // ...
+    }
+    .weather-details {
+        // ...
+    }
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: $font-body;
+    background-color: $color-primary;
+    color: #FFFFFF;
+}
+
+.navbar {
+    background-color: $color-secondary;
+    padding: 1rem;
+
+    a {
+        color: $color-accent;
+        text-decoration: none;
+        margin-right: 1rem;
+
+        &:hover {
+            color: $color-accent2
+        }
+    }
+}
+
+.btn {
+    background-color: $color-accent;
+    border: none;
+    padding: 0.5rem 1rem;
+    color: $color-secondary;
+    border-radius: 4px;
+
+    &:hover {
+        background-color: $color-accent2;
+        cursor: pointer;
+    }
+}
