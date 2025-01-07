@@ -1,5 +1,4 @@
 
-import { Link } from "react-router-dom";
 import { useState, useEffect, useRef } from 'react';
 import '../styles/sunshine.css';
 
@@ -29,11 +28,12 @@ function LandingPage() {
 
 
 const clickButton = () => {
-    window.location.href = "./pages/Home";
+    window.location.href = "./Login";
 };
 
 return (
-    <div id = "circle" className = "landing-page">
+    <div className = "landing-page">
+        <div className="circle">
         <h1 id = "first-message">{text}</h1>
         {circularButton && (
             <button
@@ -41,9 +41,10 @@ return (
                 ref = {buttonRef}
                 onClick = {clickButton}
                 style = {{display: "inline-block"}}
-            >Click Here to Get YOur Day Started!
+            >Click Here to Get Your Day Started!
             </button>
         )}
+        </div>
     </div>
 );
 };
