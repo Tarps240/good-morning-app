@@ -20,7 +20,7 @@ function News() {
 
     return (
         <div className="news-page">
-            <h2>Top News</h2>
+            <h2 style = {{textAlign: 'center'}}>Top News</h2>
             {error && <p className="error-message">{error}</p>}
             <div className="articles">
                 {articles.map((article, idx) => (
