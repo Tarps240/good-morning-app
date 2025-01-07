@@ -40,35 +40,104 @@
     // general styles
 }
 
+/* Container styling */
 .crypto-page {
-
-  width: 100%;
-  margin: 0 auto;
+    background-color: $bg-color;
+    color: $text-color;
+    min-height: 100vh; /* fill screen vertically */
+    padding: 1rem;
+    width: 100%;
+    margin: 0 auto;
 
   .coin-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1rem;
-    width: 100%;
-  }
-
-  .coin-item {
-    background-color:#FFFFFF;
-    color: black;
-    padding-left: 10px;
-    padding-top: 10px;
-  }
-
-  .coin-card {
-    background-color: #FFFFFF;
-    border-radius: 8px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 250px;
-    overflow: hidden;
+    gap: 0.5rem; /* spacing between rows */
+  }
+} 
+
+/* Each row for a coin - more like a "card row" */
+  .coin-card {
+    background-color: $card-color;
+    padding: 0.8rem;
+    border-radius: 6px;
+    display: flex;
+    align-items: center; /* vertically center elements */
+    justify-content: space-between;
     position: relative;
+
+    /* optional shadow */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+
+    .coin-left {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+    }
+
+    .coin-logo {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .coin-info {
+        display: flex;
+        flex-direction: column;
+
+        .coin-name {
+            font-size: 1.1rem;
+            font-weight : 600;
+        }
+
+        .coin-symbol-rank {
+            font-size: 0.85rem;
+            color: $subtext-color;
+        }
+    }
+
+    .coin-chart {
+        flex: 1;
+        margin: 0 0.5rem;
+        /* Place mini-sparkline or chart image here */
+        img {
+            height: 32px;
+        }
+    }
+
+    .coin-price {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+
+        .price {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .mcap {
+            font-size: 0.8rem;
+            color: $subtext-color;
+        }
+    }
+
+    .coin-change {
+        font-size: 0.9rem;
+        margin-left: 0.5rem;
+
+        &.positive {
+            color: $green-color;
+        }
+        &.negative {
+            color: $red-color;
+        }
+    }
+
+    /* Additional hover or pressed states */
+    &:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    }
 
     /* For text or images */
     h3 {
@@ -104,7 +173,6 @@
         }
     }
   }
-}
 
 .news-page {
     .articles {
