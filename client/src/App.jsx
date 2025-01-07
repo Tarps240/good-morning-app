@@ -6,6 +6,8 @@ import Weather from "./pages/Weather";
 import News from "./pages/News";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
+import Landing from "./pages/Landing"
+
 
 function App() {
   return (
@@ -18,6 +20,7 @@ function App() {
         <Link to="/crypto">Crypto</Link>
         <Link to="/weather">Weather</Link>
         <Link to="/news">News</Link>
+        <Link to = "/landing">Landing</Link>
       </nav>
       
       <Routes>
@@ -28,6 +31,7 @@ function App() {
         <Route path="/cypto/:coinId/trade" element={<Trade />} />
         <Route path="/weather" element={<Weather />} />
         <Route path="/news" element={<News />} />
+        <Route path = "/landing" element = {<Landing />} />
         {/* Other Routes go here */}
       </Routes>
     </Router>
