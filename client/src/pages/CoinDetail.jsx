@@ -4,6 +4,17 @@ import { useParams, useNavigate } from "react-router-dom";
 import axiosInstance from "../api/axiosInstance";
 import { Sparklines, SparklinesLine } from "react-sparklines";
 
+// Import Recharts
+import { 
+    ResponsiveContainer,
+    LineChart,
+    Line,
+    XAxis,
+    YAxis,
+    Tooltip,
+    CartesianGrid,
+} from "recharts";
+
 function CoinDetail() {
     const { coinId } = useParams();
     const navigate = useNavigate();
@@ -36,7 +47,10 @@ function CoinDetail() {
     const historical = coinData.market_chart?.prices ?? [];
 
     // Convert [[timestamp, price], ...] to [price, price, ...]
-    const chartData = historical.map(point => point[1]);
+    const chartData = historical.map(([ts, p]) => ({
+        time: new Date(ts).toLocaleDateString("en-US"),
+        price: p
+    }));
 
     // Suppose coinData has a "prices" array for the last 30 days, etc.
     return (
@@ -64,11 +78,28 @@ function CoinDetail() {
             <h2>Historical Chart: Last 30 Days</h2>
             {/* Use chartdata which is just an array of the prices. */}
             {chartData.length > 0 ? (
-                <Sparklines data={chartData} width={200} height={80}>
-                    <SparklinesLine style={{ strokeWidth: 1, fill: "none" }} color="#38D39F" />
-                </Sparklines>
+                <div style={{ width: "100%", height: "300px", backgroundColor: "#272B41", borderRadius: "6px", padding: "1rem" }}>
+                    <ResponsiveContainer>
+                        <LineChart data={chartData} margin={{ top: 10, right: 30, left: 0, bottom: 10 }}>
+                            <CartesianGrid strokeDasharray="3 3" stroke="#444" />
+                            <XAxis dataKey="time" stroke="#CCC" />
+                            <YAxis stroke="#CCC" />
+                            <Tooltip
+                                contentStyle={{ backgroundColor: "#333", border: "none" }}
+                                labelStyle={{ color: "#FFF" }}
+                            />
+                            <Line
+                                type="monotone"
+                                dataKey="price"
+                                stroke="#38D39F"
+                                strokeWidth={2}
+                                dot={false}
+                            />
+                        </LineChart>
+                    </ResponsiveContainer>
+                </div>
             ) : (
-                <p>No Historical data available.</p>
+              <p>No Historical data available.</p>
             )}
 
             {/* Add more details: volume, supply, etc. */}
