@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/Home";
 import Crypto from "./pages/Crypto";
-import Trade from "./pages/Trade";
+import CoinDetail from "./pages/CoinDetail";
 import Weather from "./pages/Weather";
 import News from "./pages/News";
 import Register from "./pages/Register";
@@ -28,7 +28,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/crypto" element={<Crypto />} />
-        <Route path="/cypto/:coinId/trade" element={<Trade />} />
+        <Route path="/crypto/:coinId" element={<CoinDetail />} />
         <Route path="/weather" element={<Weather />} />
         <Route path="/news" element={<News />} />
         <Route path = "/landing" element = {<Landing />} />
