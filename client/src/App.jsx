@@ -7,10 +7,38 @@ import News from "./pages/News";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Landing from "./pages/Landing"
+import "./styles/main.scss";
+import { useEffect, useState } from "react";
 
 
 function App() {
+  // 'light' / 'dark' / 'auto'
+  const [theme, setTheme] = useState("auto");
+
+  // Compute the actual mode => 'light' or 'dark'
+  const [actualMode, setActualMode] = useState("dark");
+
+  useEffect(() => {
+    function computeMode() {
+      if (theme === "light") return "light";
+      if (theme === "dark") return "dark";
+
+      const hour = new Date().getHours();
+      if (hour >= 7 && hour < 19) {
+        return "light";
+      } else {
+        return "dark";
+      }
+    }
+    setActualMode(computeMode());
+  }, [theme]);
+
+  const handleThemeChange = (newTheme) => {
+    setTheme(newTheme);
+  };
+
   return (
+    <div className={`app ${actualMode}`}>
     <Router>
       {/* Example Nav */}
       <nav className="navbar">
@@ -22,6 +50,12 @@ function App() {
         <Link to="/news">News</Link>
         <Link to = "/landing">Landing</Link>
       </nav>
+
+    <div style={{ padding: "1rem", display: "flex", gap: "1rem" }}>
+      <button onClick={() => handleThemeChange("light")}>Light Mode</button>
+      <button onClick={() => handleThemeChange("dark")}>Dark Mode</button>
+      <button onClick={() => handleThemeChange("auto")}>Auto</button>
+    </div>
       
       <Routes>
         <Route path="/" element={<Home />} />
@@ -35,6 +69,7 @@ function App() {
         {/* Other Routes go here */}
       </Routes>
     </Router>
+    </div>
   );
 };
 

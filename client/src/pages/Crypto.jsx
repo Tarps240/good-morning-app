@@ -17,7 +17,7 @@ function Crypto() {
     // Handler for when a coin is swiped.
     const handleSwipe = (coinId) => {
         // Option 1: navigate directly to trade route
-        navigate(`/crypto/${coinId}/trade`);
+        navigate(`/crypto/${coinId}`);
 
         //Option 2 (alternative): toggle some ovelay in state
         //setOverlayCoinId(coinId);
@@ -25,7 +25,7 @@ function Crypto() {
 
     const handleBuySellClick = (coinId) => {
         // Navigate to a buy/sell screen with the coin's ID or symbol.
-        navigate(`/crypto/${coinId}/trade`);
+        navigate(`/crypto/${coinId}`);
     };
 
     return (

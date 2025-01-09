@@ -1,37 +1,20 @@
+// src/styles/main.scss
 @import "./variables";
 
-.home-page {
-    padding: 2rem;
-    text-align: center;
-
-    h2 {
-        margin-bottom: 1rem;
-        color: $color-accent;
-    }
-    p {
-        margin-bottom: 2rem;
-        color: $color-muted;
-    }
-
-    .home-links {
-        display: flex;
-        justify-content: center;
-        gap: 1rem;
-
-        .home-link {
-            background-color: $color-secondary;
-            color: #ffffff;
-            padding: 0.8rem 1.2rem;
-            border-radius: 5px;
-            text-decoration: none;
-
-            &:hover {
-                background-color: $color-accent2;
-            }
-        }
-
-    }
+// Theme classes
+.app.light {
+    background-color: #FFFFFF;
+    color: #000000;
+    // Put other light theme overrides here.
 }
+
+.app.dark {
+    background-color: #1B1E2F;
+    color: #FFFFFF;
+    // Dark theme overrides
+}
+
+
 
 /* Crypto, News, Weather page styling can go here or in partials: */
 
@@ -44,27 +27,40 @@
 .crypto-page {
     background-color: $bg-color;
     color: $text-color;
-    min-height: 100vh; /* fill screen vertically */
+    min-height: 100vh;
     padding: 1rem;
     width: 100%;
     margin: 0 auto;
 
   .coin-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem; /* spacing between rows */
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+
+    @media (min-width: $tablet) {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    @media (min-width: $desktop) {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
   }
 } 
 
 /* Each row for a coin - more like a "card row" */
   .coin-card {
     background-color: $card-color;
-    padding: 0.8rem;
+    padding: 0.5rem 3rem 0.5rem 1rem;
     border-radius: 6px;
     display: flex;
     align-items: center; /* vertically center elements */
     justify-content: space-between;
     position: relative;
+
+    @media (min-width: $tablet) {
+        padding: 1.5rem 2.5rem;
+    }
 
     /* optional shadow */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);

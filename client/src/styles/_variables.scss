@@ -1,3 +1,4 @@
+// Color variables.
 $color-primary:     #212121;
 $color-secondary:   #000000;
 $color-muted:       #99B4BF;
@@ -10,6 +11,11 @@ $subtext-color:     #999999; /* subtitles, placeholders */
 $green-color:       #38D39F; /* for positive change */
 $red-color:         #F5475B; /* for negative change */
 
-// Example font stack
+// Responsive breakpoint variables
+$mobile: 480px;
+$tablet: 768px;
+$desktop: 1024px;
+
+// Font stack variables
 $font-body: 'https://fonts.googleapis.com/css2?family=Arsenal+SC:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap';
 $font-title: 'https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap';
