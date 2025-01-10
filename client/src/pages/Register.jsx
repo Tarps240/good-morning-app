@@ -1,51 +1,62 @@
-// client/src/pages/Register.jsx
-import React, { useState } from "react";
-import axiosInstance from "../api/axiosInstance";
+import { useState } from "react";
 
 function Register() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
 
-    const handleSubmit = (e) => {
+    const handleRegister = (e) => {
         e.preventDefault();
-        axiosInstance
-            .post("/api/auth/register", { email, password })
-            .then((res) => setMessage(res.data.message))
-            .catch((err) => {
-                setMessage(err.response?.data?.error || "Error registering");
-            });
+
+        // Get existing users from LocalStorage
+        let users = JSON.parse(localStorage.getItem("users")) || [];
+
+        // Check if user already exists
+        const existingUser = users.find(u => u.email === email);
+        if (existingUser) {
+            setMessage("User already exists.");
+            return;
+        }
+
+        // Create a new user object
+        const newUser = { email, password };
+
+        // Push to array and store in localStorage
+        users.push(newUser);
+        localStorage.setItem("users", JSON.stringify(users));
+
+        setMessage("User registered successfully!");
+
+        // Optionally clear fields
+        setEmail("");
+        setPassword("");
     };
 
     return (
-        <div className="p-4">
+        <div>
             <h2>Register</h2>
-            <form onSubmit={handleSubmit} style={{ maxWidth: "300px" }}>
+            <form onSubmit={handleRegister}>
+                {message && <p>{message}</p>}
                 <div>
                     <label>Email:</label>
                     <input
-                        className="block"
                         type="email"
                         value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        onChange={e => setEmail(e.target.value)}
                         required
                     />
                 </div>
                 <div>
                     <label>Password:</label>
                     <input
-                        className="block"
                         type="password"
                         value={password}
-                        onChange={(e) => setPassword(e.target.value)}
+                        onChange={e => setPassword(e.target.value)}
                         required
                     />
                 </div>
-                <button className="btn" type="submit">
-                    Register
-                </button>
+                <button type="submit">Register</button>
             </form>
-            {message && <p>{message}</p>}
         </div>
     );
 }

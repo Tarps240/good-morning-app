@@ -1,61 +1,71 @@
 // client/src/pages/Login.jsx
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axiosInstance from "../api/axiosInstance";
+
 
 function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [error, setError] = useState("");
+    const [message, setMessage] = useState("");
+
     const navigate = useNavigate();
 
     const handleLogin = (e) => {
         e.preventDefault();
-        axiosInstance
-        .post("/api/auth/login", { email, password })
-        .then((res) => {
-            // Save token in LocalStorage
-            localStorage.setItem("jwt", res.data.token);
-            setError("");
-            alert("Login successful!");
-            navigate("/");
-        })
-        .catch((err) => {
-            setError(err.response?.data?.error || "Login error");
-        });
+
+        // Read localStorage
+        let users = JSON.parse(localStorage.getItem("users")) || [];
+
+        // Find user with matching email
+        const foundUser = users.find(u => u.email === email);
+
+        if (!foundUser) {
+            setMessage("User does not exist.");
+            return;
+        }
+
+        // Compare password
+        if (foundUser.password !== password) {
+            setMessage("Invalid credentials.");
+            return;
+        }
+
+        // If valid, store a "Logged in user" in localStorage.
+        localStorage.setItem("loggedInUser", email);
+        setMessage("Login successful!");
+
+        // Auto redirect to Home page ("/") or any other route
+        navigate("/")
     };
 
     return (
-        <div className="p-4">
+        <div>
             <h2>Login</h2>
-            <form onSubmit={handleLogin} style={{ maxWidth: "300px" }}>
+            <form onSubmit={handleLogin}>
+                {message && <p>{message}</p>}
                 <div>
                     <label>Email:</label>
                     <input
-                        className="block"
                         type="email"
                         value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        onChange={e => setEmail(e.target.value)}
                         required
                     />
                 </div>
                 <div>
                     <label>Password:</label>
                     <input
-                        className="block"
                         type="password"
                         value={password}
-                        onChange={(e) => setPassword(e.target.value)}
+                        onChange={e => setPassword(e.target.value)}
                         required
                     />
                 </div>
-                <button className="btn" type="submit">
-                    Login
-                </button>
+                <button type="submit">Login</button>
             </form>
-            {error && <p style={{ color: "red" }}>{error}</p>}
         </div>
     );
+
 }
 
 export default Login;

@@ -55,20 +55,7 @@ function CoinDetail() {
     // Suppose coinData has a "prices" array for the last 30 days, etc.
     return (
         <div style={{ backgroundColor: "#1B1E2F", color: "#FFF", minHeight: "100vh", padding: "1rem" }}>
-            <button
-                onClick={() => navigate("/crypto")}
-                style={{
-                    padding: "0.5rem 1rem",
-                    marginBottom: "1rem",
-                    backgroundColor: "#272B41",
-                    color: "#FFF",
-                    border: "none",
-                    borderRadius: "4px",
-                    cursor: "pointer"
-                }}
-            >
-                Back
-            </button>
+            
 
 
             <h1>{coinData.name} Details</h1>
@@ -101,6 +88,21 @@ function CoinDetail() {
             ) : (
               <p>No Historical data available.</p>
             )}
+            
+            <button
+                onClick={() => navigate("/crypto")}
+                style={{
+                    padding: "0.5rem 1rem",
+                    marginTop: "1rem",
+                    backgroundColor: "#272B41",
+                    color: "#FFF",
+                    border: "none",
+                    borderRadius: "4px",
+                    cursor: "pointer",
+                }}
+            >
+                Back
+            </button>
 
             {/* Add more details: volume, supply, etc. */}
         </div>

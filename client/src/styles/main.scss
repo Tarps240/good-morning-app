@@ -3,18 +3,74 @@
 
 // Theme classes
 .app.light {
-    background-color: #FFFFFF;
-    color: #000000;
+    background-color: #E6ECFF;
+    color: #11122C;
     // Put other light theme overrides here.
 }
 
 .app.dark {
-    background-color: #1B1E2F;
-    color: #FFFFFF;
+    background-color: #11122C;
+    color: #E6ECFF;
     // Dark theme overrides
 }
 
+/* NAVBAR styling */
 
+.navbar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: #272B41;
+}
+
+a {
+    text-decoration: none;
+    color: #FFF;
+    font-weight: 500;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.app.light {
+    background-color: #EEEEEE;
+    a {
+        color: #fff;
+    }
+}
+
+/* Center homepage content */
+.home-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 80vh;
+    padding: 2rem;
+}
+
+.home-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.home-link {
+    background-color: #0077FF;
+    color: #FFFFFF;
+    padding: 0.8rem 1.2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.2s;
+
+    &:hover {
+        background-color: #005BBD;
+    }
+}
 
 /* Crypto, News, Weather page styling can go here or in partials: */
 
@@ -28,14 +84,20 @@
     background-color: $bg-color;
     color: $text-color;
     min-height: 100vh;
-    padding: 1rem;
+    padding: 2rem;
+    text-align: center;
     width: 100%;
     margin: 0 auto;
+
+    h2 {
+        margin-bottom: 1rem;
+    }
 
   .coin-list {
     display: grid;
     grid-template-columns: 1fr;
     gap: 1rem;
+    margin-top: 2rem;
 
     @media (min-width: $tablet) {
         grid-template-columns: 1fr 1fr;
