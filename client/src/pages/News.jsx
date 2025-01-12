@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
 import axiosInstance from "../api/axiosInstance";
-
 function News() {
     const [articles, setArticles] = useState([]);
     const [error, setError] = useState("");
-
     useEffect(() => {
         axiosInstance
             .get("/api/news")
@@ -17,7 +15,6 @@ function News() {
                 setError(err.response?.data?.error || "Error fetching news");
             });
     }, []);
-
     return (
         <div className="news-page">
             <h2 style = {{textAlign: 'center'}}>Top News</h2>
@@ -40,7 +37,6 @@ function News() {
             </div>
         </div>
     );
-
 }
 
 export default News;

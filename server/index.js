@@ -7,6 +7,7 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
+const path = require("path") //Path for file paths
 require("dotenv").config();
 
 // Routes
@@ -38,6 +39,12 @@ app.use("/api/crypto", cryptoRoutes);
 app.use("/api/weather", weatherRoutes);
 app.use("/api/news", newsRoutes);
 
+//Tell Express to serve all static files from React app client/dist folder
+app.use(express.static(path.join(_dirname, '..', 'client', 'dist')));
+//Catch-all route to serve index.html from any frontend route
+app.get('*', (req, res) => {
+    res.sendFile(path.join(_dirname, '..', 'client', 'dist', 'index.html'))
+})
 // Start server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

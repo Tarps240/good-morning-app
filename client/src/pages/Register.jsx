@@ -1,5 +1,5 @@
 // client/src/pages/Register.jsx
-import React, { useState } from "react";
+import { useState } from "react";
 import axiosInstance from "../api/axiosInstance";
 
 function Register() {
@@ -18,9 +18,10 @@ function Register() {
     };
 
     return (
-        <div className="p-4">
-            <h2>Register</h2>
-            <form onSubmit={handleSubmit} style={{ maxWidth: "300px" }}>
+        <div id="register-container">
+            <div className = "register">            
+                <h2>Registration Page</h2>
+            <form onSubmit={handleSubmit}>
                 <div>
                     <label>Email:</label>
                     <input
@@ -41,12 +42,14 @@ function Register() {
                         required
                     />
                 </div>
-                <button className="btn" type="submit">
+                <button className="btn" type="submit" style = {{fontSize: "25px"}}>
                     Register
                 </button>
             </form>
-            {message && <p>{message}</p>}
+            {message && <p style = {{color: "red"}}>{message}</p>}
         </div>
+        </div>
+        
     );
 }
 
