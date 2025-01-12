@@ -1,4 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import "./styles/main.scss";
 import Home from "./pages/Home";
 import Crypto from "./pages/Crypto";
 import CoinDetail from "./pages/CoinDetail";
@@ -7,8 +9,7 @@ import News from "./pages/News";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Landing from "./pages/Landing"
-import "./styles/main.scss";
-import { useEffect, useState } from "react";
+import ToggleTheme from "./pages/ToggleTheme";
 
 
 function App() {
@@ -36,17 +37,13 @@ function App() {
     setActualMode(computeMode());
   }, [theme]);
 
-  // On app load, check if theres a loggedinuser in localStorage
+  // On app load, check if theres a logged in user in localStorage.
   useEffect(() => {
     const storedUser = localStorage.getItem("loggedInUser");
     if (storedUser) {
       setLoggedInUser(storedUser);
     }
   }, []);
-
-  const handleThemeChange = (newTheme) => {
-    setTheme(newTheme);
-  };
 
   const handleLogOut = () => {
     localStorage.removeItem("loggedInUser");
@@ -75,18 +72,13 @@ function App() {
             <Link to="/crypto">Crypto</Link>
             <Link to="/weather">Weather</Link>
             <Link to="/news">News</Link>
+            <ToggleTheme theme={theme} setTheme={setTheme} />
             <button onClick={handleLogOut} style={{ marginLeft: "1rem" }}>
               Logout
             </button>
           </>
         )}        
       </nav>
-
-    <div style={{ padding: "1rem", display: "flex", gap: "1rem" }}>
-      <button onClick={() => handleThemeChange("light")}>Light Mode</button>
-      <button onClick={() => handleThemeChange("dark")}>Dark Mode</button>
-      <button onClick={() => handleThemeChange("auto")}>Auto</button>
-    </div>
       
       <Routes>
         <Route path="/landing" element={<Landing />} />

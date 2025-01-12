@@ -33,13 +33,14 @@ function Register() {
     };
 
     return (
-        <div>
+        <div className="register-page">
             <h2>Register</h2>
-            <form onSubmit={handleRegister}>
-                {message && <p>{message}</p>}
+            {message && <p>{message}</p>}
+            <form onSubmit={handleRegister}>                
                 <div>
-                    <label>Email:</label>
+                    <label htmlFor="register-email">Email:</label>
                     <input
+                        id="register-email"
                         type="email"
                         value={email}
                         onChange={e => setEmail(e.target.value)}
@@ -47,8 +48,9 @@ function Register() {
                     />
                 </div>
                 <div>
-                    <label>Password:</label>
+                    <label htmlFor="register-password">Password:</label>
                     <input
+                        id="register-password"
                         type="password"
                         value={password}
                         onChange={e => setPassword(e.target.value)}

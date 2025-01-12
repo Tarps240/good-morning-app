@@ -1,0 +1,63 @@
+/* ToggleTheme.scss */
+
+/* The overall label that wraps the checkbox and the slider */
+.theme-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+
+    /* Hide the input visually, but remains accessible to screen readers */
+    input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+        margin: 0;
+        position: absolute;
+    }
+
+    /* The slider background */
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background-color: #ccc;
+        border-radius: 30px;
+        transition: background-color 0.4s;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 5px;
+        box-sizing: border-box;
+
+        .sun-icon,
+        .moon-icon {
+            pointer-events: none; /* dont block clicks */
+            font-size: 1rem;
+        }
+    }
+
+    /* The "knob" or circle that slides */
+    .slider::before {
+        content: "";
+        position: absolute;
+        height: 24px;
+        width: 24px;
+        left: 3px;
+        bottom: 3px;
+        background-color: #FFF;
+        border-radius: 50%;
+        transition: transform 0.4s;
+    }
+
+    /* When input is checked move the knob to the right */
+    input:checked + .slider::before {
+        transform: translateX(30px);
+    }
+
+    /* A different background color if checked (dark mode) */
+    input:checked + .slider {
+        background-color: #2d2d2d;
+    }
+}

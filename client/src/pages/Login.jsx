@@ -39,13 +39,14 @@ function Login() {
     };
 
     return (
-        <div>
+        <div className="login-page">
             <h2>Login</h2>
+            {message && <p>{message}</p>}
             <form onSubmit={handleLogin}>
-                {message && <p>{message}</p>}
                 <div>
-                    <label>Email:</label>
+                    <label htmlFor="login-email">Email: </label>
                     <input
+                        id="login-email"
                         type="email"
                         value={email}
                         onChange={e => setEmail(e.target.value)}
@@ -53,8 +54,9 @@ function Login() {
                     />
                 </div>
                 <div>
-                    <label>Password:</label>
+                    <label htmlFor="login-password">Password: </label>
                     <input
+                        id="login-password"
                         type="password"
                         value={password}
                         onChange={e => setPassword(e.target.value)}

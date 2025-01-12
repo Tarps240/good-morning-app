@@ -54,10 +54,7 @@ function CoinDetail() {
 
     // Suppose coinData has a "prices" array for the last 30 days, etc.
     return (
-        <div style={{ backgroundColor: "#1B1E2F", color: "#FFF", minHeight: "100vh", padding: "1rem" }}>
-            
-
-
+        <div className="coin-detail-page">
             <h1>{coinData.name} Details</h1>
             <p>Current price: ${coinData.market_data?.current_price?.usd}</p>
             <p>Market cap: ${coinData.market_data?.market_cap?.usd}</p>
@@ -91,19 +88,10 @@ function CoinDetail() {
             
             <button
                 onClick={() => navigate("/crypto")}
-                style={{
-                    padding: "0.5rem 1rem",
-                    marginTop: "1rem",
-                    backgroundColor: "#272B41",
-                    color: "#FFF",
-                    border: "none",
-                    borderRadius: "4px",
-                    cursor: "pointer",
-                }}
+                className="detail-back-btn"
             >
                 Back
             </button>
-
             {/* Add more details: volume, supply, etc. */}
         </div>
     );
