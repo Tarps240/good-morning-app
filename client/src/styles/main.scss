@@ -51,6 +51,19 @@ a {
     text-align: center;
     min-height: 80vh;
     padding: 2rem;
+
+    h2 {
+        margin-bottom: 1rem;
+        color: $color-accent;
+        font-size: 40px;
+    }
+
+    p {
+        margin-bottom: 2rem;
+        color: $color-muted;
+        font-size: 20px;
+    }
+
 }
 
 .home-links {
@@ -59,17 +72,22 @@ a {
     margin-top: 1.5rem;
 }
 
-.home-link {
-    background-color: #0077FF;
-    color: #FFFFFF;
-    padding: 0.8rem 1.2rem;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: background-color 0.2s;
+.home-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
 
-    &:hover {
-        background-color: #005BBD;
+    .home-link {
+        background-color: $color-secondary;
+        color: $color-accent;
+        padding: 0.8rem 1.2rem;
+        border-radius: 5px;
+        text-decoration: none;
+
+        &:hover {
+            background-color: $color-accent2;
+            color: #FFF;
+        }
     }
 }
 
@@ -478,14 +496,63 @@ body {
 }
 
 /* Center the login/register pages */
-.login-page,
-.register-page {
+.login-container,
+.register-container {
     display: flex;
     flex-direction: column;
     align-items: center; /* horizontially center elements */
     justify-content: center; /* vertically center */
     min-height: 80vh; /* fill most of the viewport */
     text-align: center; /* center text */
+
+.login, .register {
+    max-width: 500px;
+    width: 100%;
+    margin: 20px;
+    box-sizing: border-box;
+    padding: 40px;
+
+    body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $color-primary;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        height: 100vh;
+        max-width: 600px;
+    }
+
+  h2 {
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 20px;
+  }  
+
+  h3 {
+    text-align: center;
+    color: $color-muted;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  form div {
+    margin-bottom: 20px;
+  }
+
+  form label {
+    font-size: 20px;
+  }
+
+  
+
+}
 
     /* Add spacing around the form */
     form {

@@ -39,13 +39,15 @@ function Login() {
     };
 
     return (
-        <div className="login-page">
+        <div className="login-container">
+            <div className="login">
             <h2>Login</h2>
             {message && <p>{message}</p>}
             <form onSubmit={handleLogin}>
                 <div>
                     <label htmlFor="login-email">Email: </label>
                     <input
+                        className="block"
                         id="login-email"
                         type="email"
                         value={email}
@@ -56,6 +58,7 @@ function Login() {
                 <div>
                     <label htmlFor="login-password">Password: </label>
                     <input
+                        className="block"
                         id="login-password"
                         type="password"
                         value={password}
@@ -63,11 +66,17 @@ function Login() {
                         required
                     />
                 </div>
-                <button type="submit">Login</button>
+                <button className="btn" type="submit" style={{ fontSize: "25px" }}>Login</button>
+                <br/>
+                <h3>Or</h3>
+                <h3>Click the button below to create an account</h3>
+                <button className="btn" type="button" style={{ fontSize: "25px" }}>
+                    Create Account
+                </button>
             </form>
         </div>
+        </div>
     );
-
 }
 
 export default Login;

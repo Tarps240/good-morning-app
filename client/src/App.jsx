@@ -94,7 +94,7 @@ function App() {
             <Route path="/weather" element={<Weather />} />
             <Route path="/news" element={<News />} />
           </>
-        )};        
+        )}        
         {/* If user tries to go to a protected route while not logged in, 
               you could redirect them to /login or show a 404. 
               For now, do nothing special. */}
